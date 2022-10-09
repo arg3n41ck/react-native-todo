@@ -14,16 +14,15 @@ export default function App() {
   ]);
 
   const onPressNameHandler = () => {
-    setTodos((prev) => [
-      ...prev,
-      { _id: todos.length, name, isChecked: false },
-    ]);
+    setTodos((prev) => [...prev, { _id: new Date(), name, isChecked: false }]);
     setName("");
   };
 
-  const toggleCheckedTodo = (idx) => {
-    const newArray = [].concat(todos);
-    newArray[idx].isChecked = !newArray[idx].isChecked;
+  const toggleCheckedTodo = (id) => {
+    const newArray = todos.map((item) =>
+      item._id === id ? { ...item, isChecked: !item.isChecked } : item
+    );
+    // newArray[idx].isChecked = !newArray[idx].isChecked;
     setTodos(newArray);
   };
 
@@ -35,7 +34,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.heading} h1>
-        ToDo 
+        ToDo
       </Text>
 
       <View style={styles.actions}>

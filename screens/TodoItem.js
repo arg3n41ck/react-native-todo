@@ -14,7 +14,7 @@ const TodoItem = ({
   return (
     <View style={styles.item}>
       <View style={styles.checkbox}>
-        <CheckBox onPress={() => toggleCheckedTodo(idx)} checked={isChecked} />
+        <CheckBox onPress={() => toggleCheckedTodo(_id)} checked={isChecked} />
         <Text
           style={
             isChecked
